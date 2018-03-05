@@ -1,0 +1,12 @@
+what's wrong with our use case? - change direction of arrow
+
+what's wrong with 3.3.1?
+
+missing functional requirements?
+
+Why is usability not a functional req? 
+
+"NAME" for non functional req?
+
+Class diagram - EDIT
+
