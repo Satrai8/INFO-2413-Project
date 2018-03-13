@@ -5,18 +5,15 @@ public class TestforSwitches {
 
 	public static void main(String[] args) {
 		
-		CryptoPrice crypto = new CryptoPrice();
-		crypto.setInitialValues();
-		System.out.println();
 		
-		
+		// This is the ArrayList we create to store the objects for comparing at the end 
 		ArrayList<FinancialObject> objects = new ArrayList<FinancialObject>();
 		int numberOfObjects = 0;
 		
 		
-		
+		String marketChoice;
 		Scanner input = new Scanner(System.in);
-		String marketChoice = null;
+		
 		
 		do {
 		
@@ -42,8 +39,8 @@ public class TestforSwitches {
 			
 			case "1":
 				
-				// template only, this one hasn't been finished yet, currently just a copy of the price rule
-				CryptoPrice ob = new CryptoPrice();
+				
+				CryptoVolume ob = new CryptoVolume();
 				ob.setMarket("Crypto");
 				System.out.println("Please enter the crypto symbol");
 				String symbolChoice = input.next();
@@ -54,6 +51,8 @@ public class TestforSwitches {
 				ob.setInitialValues();
 				objects.add(ob);
 				numberOfObjects ++;
+				break;
+				
 			
 			case "2":
 				
@@ -69,6 +68,7 @@ public class TestforSwitches {
 				ob2.setInitialValues();
 				objects.add(ob2);
 				numberOfObjects ++;
+				break;
 				
 				
 			}
@@ -87,17 +87,24 @@ public class TestforSwitches {
 		
 		case "1":
 			
-			
+			// create the object
 			FinancialVolume ob3 = new FinancialVolume();
+			// set the market, though this isn't actually used anywhere so can probably remove
 			ob3.setMarket("NYSE");
 			System.out.print("Please enter 3 letter ticker symbol");
+			// get the ticker symbol and then set it through method below
 			String symbolChoice3 = input.next();
 			ob3.setSymbol(symbolChoice3);
 			System.out.println("Please enter a percentage increase/decrease i.e. 10%, -10%");
+			
+			// set percentage using method that converts input into usable value
 			double percentageChoice3 = input.nextDouble();
 			ob3.setPercentage(percentageChoice3);
+			// call setInitialValues() to get the base price and the target
 			ob3.setInitialValues();
+			// add the object to our ArrayList
 			objects.add(ob3);
+			//increase number of objects so that we know how many are in our ArrayList for looping purposes
 			numberOfObjects ++;
 			break;
 			
@@ -117,21 +124,25 @@ public class TestforSwitches {
 			ob4.setInitialValues();
 			objects.add(ob4);
 			numberOfObjects ++;
+			break;
 			
 		} 
 		
 		
+		// breaks out of switches if the user enters 3 (quit)
 	} } while (!marketChoice.equals("3"));
 		
+		// run this loop forever since we're done with user input and the program is just executing the comparisons at this point in time
          while (true ) {
 		
+        	 // used for looping through our arrayList
 		 for(int i = 0; i < numberOfObjects; i++)
 		    {
-		       // System.out.println(objects.get(i).market);
-		      //  System.out.println(objects.get(i).symbol);
-		       // System.out.println(objects.get(i).initialValue);
-		      //  System.out.println(objects.get(i).target);
-		        objects.get(i).compareValues();
+		    
+			 // gets the object at index position i and calls compare values on it
+			 objects.get(i).compareValues();
+		        
+		     
 		    }
          }
 		
