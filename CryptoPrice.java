@@ -19,36 +19,12 @@ public class CryptoPrice extends FinancialObject {
 	
 	@Override
 	public void compareValues() {
-double currentVal = 0.0;
-		
-		
-		
-		
-		
-		
-		
-		
-String endString ="&apikey=U7CEKTSD7MP0A660";
 
-String myString = "https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_INTRADAY&symbol=" + symbol + "&market=USD" + endString;
+		double currentVal = 0.0;
+		String endString ="&apikey=U7CEKTSD7MP0A660";
+		String myString = "https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_INTRADAY&symbol=" + symbol + "&market=USD" + endString;
 
 
-
-		
-
-		
-		
-
-
-
-
-		
-		
-		
-		
-		 
-		
-	
 		try {
 	
 			URL url = new URL(myString);
@@ -68,12 +44,7 @@ String myString = "https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_I
 	
 	
 			while (line != null && currentVal == 0.0) {
-				
-				
-	
-		
-		
-		
+
 				if (line.contains("price")){
 		
 					int index = line.indexOf("price");
@@ -86,8 +57,6 @@ String myString = "https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_I
 					price = line.substring(start + 1, decimal + 5);
 					currentVal = Double.parseDouble(price);
 					
-					
-					
 					if (percentage > 1 && currentVal > target) {
 						
 						System.out.println("Current value is " + symbol + " is " + currentVal + "\n");
@@ -97,9 +66,6 @@ String myString = "https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_I
 						System.out.println("initial Value is " + initialValue + "\n");
 						
 						System.out.println("-------------------------------------------------------------------");
-						
-						
-						
 						
 					}
 					
@@ -113,33 +79,11 @@ String myString = "https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_I
 					
 					System.out.println("-------------------------------------------------------------------");
 					
-					
-						
-						
-						
-						
-					
-					
-						
-			
-					
-				
-				
-					
-					
-					
-					
-		
 				}
-			
-	
+
 		line = buff.readLine();
-	
-	
-	
+
 			}
-	
-	
 	}
 	
 	catch (MalformedURLException e) {
@@ -165,8 +109,6 @@ String myString = "https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_I
 	@Override
 	public void setInitialValues() {
 		
-		
-
 				
 		String endString ="&apikey=U7CEKTSD7MP0A660";
 		
@@ -174,8 +116,7 @@ String myString = "https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_I
 		
 		initialValue = -1.00;
 		
-		
-			
+					
 		try {
 	
 			URL url = new URL(myString);
@@ -192,17 +133,9 @@ String myString = "https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_I
 	
 			line = buff.readLine();
 			
-			
-	
-	
-	
 			while (line != null && initialValue == -1.0) {
 				
-				
-	
-		
-		
-		
+
 				if (line.contains("price")){
 		
 					int index = line.indexOf("price");
@@ -216,20 +149,14 @@ String myString = "https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_I
 					initialValue = Double.parseDouble(price);
 					target = initialValue * percentage ;
 										
-					
-					
-									
-		
+
 				}
 			
 	
 		line = buff.readLine();
 	
-	
-	
 			}
-	
-	
+
 	}
 	
 	catch (MalformedURLException e) {
@@ -250,10 +177,7 @@ String myString = "https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_I
 		e1.printStackTrace();
 	}
 	
-		
 	
-	
-		
 	}
 
 }
