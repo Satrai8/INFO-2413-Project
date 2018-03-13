@@ -10,127 +10,99 @@ import java.util.Scanner;
 
 public class FinancialPrice extends FinancialObject {
 	
+	// the fields we need for this class in particular. Symbol(ex. AMZN) and Market(ex. NYSE) are inherited through superclass so not used directly here.
+	
 	double percentage;
 	double initialValue;
 	double target;
 	
 	
-
-	
-	
-	
-	
+	// default constructor for making the object
 	public FinancialPrice() {
 		
 	}
-
 	
-	public FinancialPrice(String myMarket, String mySymbol, double myPercentage) {
-		
-		market = myMarket;
-		symbol = mySymbol;
-		percentage = myPercentage;
+	
+	// used for setting the percentage from user input and converting it to a value we can use for the math. Will work with negatives too (ex. -5/100 + 1.0 = 0.95)
+	public void setPercentage(double myPercentage){
+		percentage = myPercentage/100.00 + 1.00;
 	}
-
-
-
-
 	
 	
-
-	
-	
-	
+	// overrides empty setInitialValues() method from superclass
 	@Override
 	public void setInitialValues() {
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+				
+		// our API key
 		String endString ="&apikey=U7CEKTSD7MP0A660";
 		
+		// the actual API query URL. Notice symbol is plugged in as a variable (ex. BTC) and this will come from user input executing in the TestforSwitches Class where the main code is running
 		String myString = "https://www.alphavantage.co/query?function=BATCH_STOCK_QUOTES&symbols=" + symbol + endString;
-
+		
+		
+		// setting initial value here, this will allow us to break the loop below when initial value obtains a value from the API call
 		initialValue = -1.00;
-
-		
-		
-
-
-
-
-		
-		
-		
-		
-		 
 		
 	
 		try {
 	
+			//creates the URL object using myString that we created above using user input and our API key.
 			URL url = new URL(myString);
 	
+			//opens the link/connection to the above URL object created.
 			URLConnection hc = url.openConnection();
 	
+			// open a stream reader on the above connection ( to read the data returned by the API calls line by line)
 			InputStreamReader mystream = new InputStreamReader(hc.getInputStream());;
-	
+			
+			//buffer the step above
 			BufferedReader buff = new BufferedReader(mystream);
-	
+			
+			// use readLine() method to read a new line of text from the API call return and assign it to string variable line
 			String line = buff.readLine();
-	
+			
+			// initialize price variable
 			String price = "no price available";
 	
-			line = buff.readLine();
+			
 	
 	
-	
+			// loop will keep running while line isn't null and initial value is still defaulted to -1.00. Once we manage to parse an initialValue this loop will break out since we're done with it at that point.
 			while (line != null && initialValue == -1.00) {
 				
-				
-	
-		
-		
-		
+		// checks to see if the current line contains the word price
 				if (line.contains("price")){
 		
+					// finds the index of the word price in that line, and sets the value to the integer variable called index
 					int index = line.indexOf("price");
+					
+					// searches for the first occurrence of a decimal, starting from the index of the word price, which we assigned to the index variable. Creates a variable called decimal for this index.
 					int decimal = line.indexOf(".",index);
+					
+					// assign a new variable as the start point because we're going to need to move it back from the decimal index in order to capture the numbers in front of the decimal
 					int start = decimal;
 			
+					/* checks the character at the index of our start variable, if the character is not a quotation mark, it moves start index back by 1. Keeps going until it hits the next quotation mark. 
+					 * At this point we know this is the beginning of the number we want to capture */
+					 
 					while (line.charAt(start) != '\"')
 					start --;
 			
+					// this is where we actually get the price taking a substring of only what we want out of the entire line. The first index is start + 1 ( 1 more than the index of the quotation mark) and then we end 5 places from the decimal
 					price = line.substring(start + 1, decimal + 5);
+					
+					// it's parsed as a string, so now we convert it to an integer so we can use it for math.
 					initialValue = Double.parseDouble(price);
+					
+					// percentage is already sent properly in the main class where setPercentage is called, so our math works fine here to get target.
 					target = initialValue * percentage ;
-					
-						
-			
-					
-				
-				
-					
-					
-					
-					break;
-		
+											
 				}
 			
-	
+		// reads in the next line
 		line = buff.readLine();
-	
-	
-	
+		
 			}
-	
-	
 	}
 	
 	catch (MalformedURLException e) {
@@ -149,55 +121,23 @@ public class FinancialPrice extends FinancialObject {
 	} catch (InterruptedException e1) {
 		
 		e1.printStackTrace();
+	}		
 	}
 	
-		
-	
-	
-		
-		
-	}
-	
-	
-	public void setPercentage(double myPercentage){
-		percentage = myPercentage/100.00 + 1.00;
-	}
-
 
 	@Override
 	public void compareValues() {
 		
-		
-		double currentVal = 0.0;
-		
-		
-		
-		
-		
-		
-		
-		
+		// used for breaking the loop once currentValue is set. We only run the loop once internally because it needs to move on to the next object in the array. The array will eventually loop back to the first object and call this entire method again.
+		double currentVal = 0.0;		
 		
 		String endString ="&apikey=U7CEKTSD7MP0A660";
 		
 		String myString = "https://www.alphavantage.co/query?function=BATCH_STOCK_QUOTES&symbols=" + symbol + endString;
-
-		
-		
-
-		
-		
-
-
-
-
-		
-		
-		
-		
-		 
 		
 	
+		
+		// all this part is the same as setInitialValues() method
 		try {
 	
 			URL url = new URL(myString);
@@ -212,17 +152,11 @@ public class FinancialPrice extends FinancialObject {
 	
 			String price = "no price available";
 	
-			line = buff.readLine();
 	
-	
-	
+		
 			while (line != null && currentVal == 0.0) {
 				
-				
-	
-		
-		
-		
+				// same idea as setInitialValue() method		
 				if (line.contains("price")){
 		
 					int index = line.indexOf("price");
@@ -237,7 +171,11 @@ public class FinancialPrice extends FinancialObject {
 					
 					
 					
-					if (percentage > 1 && currentVal > target) {
+					if (percentage > 1.0 && currentVal > target) {
+						
+						/* the prints are just to make sure its working. Normally this will check if the user entered for a positive or negative gain. If positive then the converted value for percentage will be above 1, if negative then below 1
+						 so then we know if we need to execute a message for currentVal > target or currentValue < target
+						 */
 						
 						System.out.println("Current value is " + symbol + " is " + currentVal + "\n");
 						
@@ -246,13 +184,10 @@ public class FinancialPrice extends FinancialObject {
 						System.out.println("initial Value is " + initialValue + "\n");
 						
 						System.out.println("-------------------------------------------------------------------");
-						
-						
-						
-						
+												
 					}
 					
-					else if (percentage < 1 && currentVal < target);
+					else if (percentage < 1.0 && currentVal < target);
 					
 					System.out.println("Current value for " + symbol + " is " + currentVal + "\n");
 					
@@ -261,34 +196,13 @@ public class FinancialPrice extends FinancialObject {
 					System.out.println("initial Value is " + initialValue + "\n");
 					
 					System.out.println("-------------------------------------------------------------------");
-					
-					
-						
-						
-						
-						
-					
-					
-						
-			
-					
-				
-				
-					
-					
-					
-					
-		
+							
 				}
 			
 	
 		line = buff.readLine();
-	
-	
-	
+		
 			}
-	
-	
 	}
 	
 	catch (MalformedURLException e) {
@@ -307,20 +221,6 @@ public class FinancialPrice extends FinancialObject {
 	} catch (InterruptedException e1) {
 		
 		e1.printStackTrace();
-	}
-	
-	
+	}	
     }
-		 
-	
-	
-		
-	
-	
-	
-
-
-	
-	
-
 }
