@@ -6,6 +6,7 @@ public abstract class FinancialObject {
 	
 	String symbol;
 	String market;
+	Boolean consoleView = false;
 	
 
 	public void setSymbol(String mySymbol){
@@ -23,7 +24,18 @@ public abstract class FinancialObject {
 	public abstract void compareValues();
 	
 	public abstract void setInitialValues();
+	
+	
+	// Check if user wants to display output on screen
+	public void setConsoleInput(int x){
 		
+		if (x == 1)
+			consoleView = true;
+		
+		else consoleView = false;		
+	}	
 }
+		
+
 
 

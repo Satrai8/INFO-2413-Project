@@ -170,32 +170,36 @@ public class FinancialPrice extends FinancialObject {
 					currentVal = Double.parseDouble(price);
 					
 					
+					if (consoleView) {
+					System.out.println("Current value is " + symbol + " is " + currentVal + "\n");
+					
+					System.out.println("target " + target + "\n");
+										
+					System.out.println("initial Value is " + initialValue + "\n");
+					
+					System.out.println("-------------------------------------------------------------------");
+					
+					}
+					
+					
+					
+					
+					
 					
 					if (percentage > 1.0 && currentVal > target) {
-						
-						/* the prints are just to make sure its working. Normally this will check if the user entered for a positive or negative gain. If positive then the converted value for percentage will be above 1, if negative then below 1
-						 so then we know if we need to execute a message for currentVal > target or currentValue < target
-						 */
-						
-						System.out.println("Current value is " + symbol + " is " + currentVal + "\n");
-						
-						System.out.println("target " + target + "\n");
-											
-						System.out.println("initial Value is " + initialValue + "\n");
+												
+						System.out.println("****************  Your target price for " + symbol + " has been reached  ************************");					
 						
 						System.out.println("-------------------------------------------------------------------");
 												
 					}
 					
-					else if (percentage < 1.0 && currentVal < target);
+					else if (percentage < 1.0 && currentVal < target) {
 					
-					System.out.println("Current value for " + symbol + " is " + currentVal + "\n");
-					
-					System.out.println("target value is " + target + "\n");
-									
-					System.out.println("initial Value is " + initialValue + "\n");
+					System.out.println("****************  Your target price for " + symbol + " has been reached  ************************");
 					
 					System.out.println("-------------------------------------------------------------------");
+					}
 							
 				}
 			
