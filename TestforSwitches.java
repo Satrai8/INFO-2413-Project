@@ -5,6 +5,10 @@ public class TestforSwitches {
 
 	public static void main(String[] args) {
 		
+		FinancialObject test = new FinancialSMA();
+		
+		test.compareValues();
+		
 		
 		// This is the ArrayList we create to store the objects for comparing at the end 
 		ArrayList<FinancialObject> objects = new ArrayList<FinancialObject>();
@@ -13,6 +17,14 @@ public class TestforSwitches {
 		
 		String marketChoice;
 		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Do you want to view output in the console while the program is running?");
+		System.out.println("1: Yes");
+		System.out.println("2: No");
+		
+		int consoleInputChoice = input.nextInt();
+		
+		
 		
 		
 		do {
@@ -43,11 +55,9 @@ public class TestforSwitches {
 				CryptoVolume ob = new CryptoVolume();
 				ob.setMarket("Crypto");
 				System.out.println("Please enter the crypto symbol");
-				String symbolChoice = input.next();
-				ob.setSymbol(symbolChoice);
+				ob.setSymbol(input.next());
 				System.out.println("Please enter a percentage increase/decrease i.e. 10%, -10%");
-				double percentageChoice = input.nextDouble();
-				ob.setPercentage(percentageChoice);
+				ob.setPercentage(input.nextDouble());
 				ob.setInitialValues();
 				objects.add(ob);
 				numberOfObjects ++;
@@ -60,11 +70,9 @@ public class TestforSwitches {
 				CryptoPrice ob2 = new CryptoPrice();
 				ob2.setMarket("Crypto");
 				System.out.println("Please enter the crypto symbol");
-				String symbolChoice2 = input.next();
-				ob2.setSymbol(symbolChoice2);
+				ob2.setSymbol(input.next());
 				System.out.println("Please enter a percentage increase/decrease i.e. 10%, -10%");
-				double percentageChoice2 = input.nextDouble();
-				ob2.setPercentage(percentageChoice2);
+				ob2.setPercentage(input.nextDouble());
 				ob2.setInitialValues();
 				objects.add(ob2);
 				numberOfObjects ++;
@@ -93,13 +101,10 @@ public class TestforSwitches {
 			ob3.setMarket("NYSE");
 			System.out.print("Please enter 3 letter ticker symbol");
 			// get the ticker symbol and then set it through method below
-			String symbolChoice3 = input.next();
-			ob3.setSymbol(symbolChoice3);
-			System.out.println("Please enter a percentage increase/decrease i.e. 10%, -10%");
-			
+			ob3.setSymbol(input.next());
+			System.out.println("Please enter a percentage increase/decrease i.e. 10%, -10%");			
 			// set percentage using method that converts input into usable value
-			double percentageChoice3 = input.nextDouble();
-			ob3.setPercentage(percentageChoice3);
+			ob3.setPercentage(input.nextDouble());
 			// call setInitialValues() to get the base price and the target
 			ob3.setInitialValues();
 			// add the object to our ArrayList
@@ -116,11 +121,9 @@ public class TestforSwitches {
 			FinancialPrice ob4 = new FinancialPrice();
 			ob4.setMarket("NYSE");
 			System.out.println("Please enter 3 letter ticker symbol");
-			String symbolChoice4 = input.next();
-			ob4.setSymbol(symbolChoice4);
+			ob4.setSymbol(input.next());
 			System.out.print("Please enter percentage increase/decrease i.e. 10%, -10%");
-			double percentageChoice4 = input.nextDouble();
-			ob4.setPercentage(percentageChoice4);
+			ob4.setPercentage(input.nextDouble());
 			ob4.setInitialValues();
 			objects.add(ob4);
 			numberOfObjects ++;
@@ -140,6 +143,9 @@ public class TestforSwitches {
 		    {
 		    
 			 // gets the object at index position i and calls compare values on it
+			 if (consoleInputChoice == 1){
+				 objects.get(i).setConsoleInput(consoleInputChoice);				 
+			 }
 			 objects.get(i).compareValues();
 		        
 		     
