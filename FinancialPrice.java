@@ -171,12 +171,9 @@ public class FinancialPrice extends FinancialObject {
 					
 					
 					if (consoleView) {
-					System.out.println("Current value is " + symbol + " is " + currentVal + "\n");
-					
-					System.out.println("target " + target + "\n");
-										
-					System.out.println("initial Value is " + initialValue + "\n");
-					
+					System.out.println("\nCurrent value for " + symbol + " is " + currentVal + "\n");					
+					System.out.println("target is " + target + "\n");										
+					System.out.println("Initial Value is " + initialValue + "\n");					
 					System.out.println("-------------------------------------------------------------------");
 					
 					}

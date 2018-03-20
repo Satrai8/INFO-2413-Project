@@ -5,28 +5,20 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
-public class FinancialVolume extends FinancialObject {
+public class CryptoVolume extends FinancialObject {
 	
 	double initialVolume;
 	double currentVolume;
 	double percentage;
 	double targetVolume;
-	
-	
-	public void setPercentage(double myPercentage){
-		percentage = myPercentage/100.00 + 1.00;
-	}
-	
-	
-	
-
 
 	@Override
 	public void compareValues() {
-
-		String endString ="&apikey=U7CEKTSD7MP0A660";
 		
-		String myString = "https://www.alphavantage.co/query?function=BATCH_STOCK_QUOTES&symbols=" + symbol + endString;
+		double currentVol = 0.0;
+	
+	String endString ="&apikey=U7CEKTSD7MP0A660";		
+	String myString = "https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_INTRADAY&symbol=" + symbol + "&market=USD" + endString;
 
 		try {
 	
@@ -40,25 +32,24 @@ public class FinancialVolume extends FinancialObject {
 	
 			String line = buff.readLine();
 	
-			String currentVol = "no price available";
+			String volume = "no volume available";
 	
 			line = buff.readLine();
 	
 	
 	
-			while (line != null) {
+			while (line != null && currentVol == 0.0) {
 
-				if (line.contains("volume")){
+				if (line.contains("volume\":")){
 		
-					int index = line.indexOf("volume");
+					int index = line.indexOf("volume\":");
 					int quotation = line.indexOf('\"',index +7);
 					int start = quotation +1;
 					int end = line.indexOf('\"', start);
 			
 					
-					currentVol = line.substring(start, end);
-					initialVolume = Double.parseDouble(currentVol);
-					targetVolume = initialVolume * percentage ;
+					volume = line.substring(start, end);
+					currentVol = Double.parseDouble(volume);
 					
 						
 					System.out.println("Initial Volume for " + symbol + " is " + initialVolume + "\n");
@@ -93,15 +84,15 @@ public class FinancialVolume extends FinancialObject {
 		
 		e1.printStackTrace();
 	}
+		
 	}
-
 
 	@Override
 	public void setInitialValues() {
-
-		String endString ="&apikey=U7CEKTSD7MP0A660";
 		
-		String myString = "https://www.alphavantage.co/query?function=BATCH_STOCK_QUOTES&symbols=" + symbol + endString;
+		String endString ="&apikey=U7CEKTSD7MP0A660";		
+		String myString = "https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_INTRADAY&symbol=" + symbol + "&market=USD" + endString;
+		initialVolume = -1.0;
 
 
 		try {
@@ -122,14 +113,15 @@ public class FinancialVolume extends FinancialObject {
 	
 	
 	
-			while (line != null) {
+			while (initialVolume == -1.0) {
 		
-				if (line.contains("volume")){
+				if (line.contains("volume\":")){
+										
 		
-					int index = line.indexOf("volume");
+					int index = line.indexOf("volume\":");
 					int quotation = line.indexOf('\"',index +7);
 					int start = quotation +1;
-					int end = line.indexOf('\"', start);
+					int end = line.indexOf('\"', quotation +1);
 			
 					
 					currentVol = line.substring(start, end);
@@ -158,7 +150,13 @@ public class FinancialVolume extends FinancialObject {
 	} catch (InterruptedException e1) {
 		
 		e1.printStackTrace();
-	}			
-}
-	
+	}	
+		
+	}
+
+	public void setPercentage(double myPercentage) {
+		percentage = myPercentage/100.00 + 1.00;
+		
+	}
+
 }

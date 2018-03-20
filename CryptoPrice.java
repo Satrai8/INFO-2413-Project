@@ -4,6 +4,9 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class CryptoPrice extends FinancialObject {
 
@@ -24,6 +27,25 @@ public class CryptoPrice extends FinancialObject {
 		String endString ="&apikey=U7CEKTSD7MP0A660";
 		String myString = "https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_INTRADAY&symbol=" + symbol + "&market=USD" + endString;
 
+		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
+		
+		try {
+			printOutput("\nTarget for " + symbol.toString() + " reached at " + getDate());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			printOutput("\nbig boi" + getDate());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 
 		try {
 	
@@ -71,6 +93,8 @@ public class CryptoPrice extends FinancialObject {
 					
 					else if (percentage < 1 && currentVal < target);
 					
+				
+				
 					System.out.println("Current value for " + symbol + " is " + currentVal + "\n");
 					
 					System.out.println("target value is " + target + "\n");

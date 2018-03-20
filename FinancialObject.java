@@ -1,3 +1,11 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 // This is the superclass being used to base all our subclasses off of
 
@@ -34,6 +42,28 @@ public abstract class FinancialObject {
 		
 		else consoleView = false;		
 	}	
+	
+	
+	public void printOutput(String s) throws Exception {
+		
+		File file = new File("word.txt");
+		PrintWriter writer = new PrintWriter(new FileWriter(file,true));
+		BufferedWriter buff = new BufferedWriter(writer);
+		
+
+		buff.write(s);
+		buff.newLine();
+		buff.flush();
+		buff.close();
+		
+	}
+	
+	public String getDate(){
+		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		return dateFormat.format(date);
+	}
 }
 		
 

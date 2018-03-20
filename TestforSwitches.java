@@ -1,13 +1,22 @@
+import java.io.*;
 import java.util.*;
 
 
 public class TestforSwitches {
 
-	public static void main(String[] args) {
+	public static void main(String[] args)throws Exception {
 		
-		FinancialObject test = new FinancialSMA();
+		File file = new File("word.txt");
+		String dir = System.getProperty("user.dir");
+		System.out.println(dir);
+		FileOutputStream output = new FileOutputStream(file);
+		PrintWriter writer = new PrintWriter(output);
 		
-		test.compareValues();
+		String word = "Let me see if this shit works";
+		writer.write(word);
+		writer.flush();
+		output.close();
+		writer.close();
 		
 		
 		// This is the ArrayList we create to store the objects for comparing at the end 
@@ -79,6 +88,8 @@ public class TestforSwitches {
 				break;
 				
 				
+				
+				
 			}
 }
 	
@@ -88,6 +99,7 @@ public class TestforSwitches {
 			System.out.println("Please enter a trading rule: ");
 			System.out.println("1: Volume increase/decrease");
 			System.out.println("2: Percentage increase/decrease");
+			System.out.println("3: SMA");
 			
 			String nyseRuleChoice = input.next();
 		
@@ -126,6 +138,16 @@ public class TestforSwitches {
 			ob4.setPercentage(input.nextDouble());
 			ob4.setInitialValues();
 			objects.add(ob4);
+			numberOfObjects ++;
+			break;
+			
+		case "3":
+			
+			FinancialSMA ob5 = new FinancialSMA();
+			System.out.println("Please enter 3 letter ticker symbol");
+			ob5.setSymbol(input.next());
+			ob5.setinitializeSt();
+			objects.add(ob5);
 			numberOfObjects ++;
 			break;
 			

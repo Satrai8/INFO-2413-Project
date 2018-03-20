@@ -16,12 +16,10 @@ public class FinancialSMA extends FinancialObject {
 	}
 	
 	
-	public void setStVal() {
+	public void setinitializeSt() {
 		
 		// used for breaking the loop once currentValue is set. We only run the loop once internally because it needs to move on to the next object in the array. The array will eventually loop back to the first object and call this entire method again.
 				double currentShortTerm = 0.0;	
-				
-				symbol = "AMZN";
 				
 				String myString = "https://www.alphavantage.co/query?function=SMA&symbol=" + symbol + "&interval=1min&time_period=5&series_type=close&apikey=U7CEKTSD7MP0A660";
 				
@@ -58,14 +56,7 @@ public class FinancialSMA extends FinancialObject {
 										stSMA = line.substring(start + 1, decimal + 5);
 							currentShortTerm = Double.parseDouble(stSMA);
 							
-							
-							
-							
-							if (consoleView) {
-								
-								System.out.println("The current simple short term moving average is " + currentShortTerm);
-							
-							}
+	
 														
 						}
 					
@@ -133,16 +124,6 @@ public class FinancialSMA extends FinancialObject {
 								start --;
 											ltSMA = line.substring(start + 1, decimal + 5);
 								currentLongTerm = Double.parseDouble(ltSMA);
-								
-							
-								
-								
-								if (consoleView) {
-									
-									
-									System.out.println("The current simple long term moving average is " + currentLongTerm);
-								
-								}
 					
 							}
 						
@@ -163,15 +144,13 @@ public class FinancialSMA extends FinancialObject {
 				
 				try {
 					
-					Thread.sleep(2 * 1000);
+					Thread.sleep(2 * 500);
 				
 				} catch (InterruptedException e1) {
 					
 					e1.printStackTrace();
 				}	
-				
-				
-				System.out.println("Made it this far and " + currentShortTerm + " " + currentLongTerm);
+								
 				
 				if (currentShortTerm > currentLongTerm) {
 					initializeSt = true;
@@ -189,8 +168,6 @@ public class FinancialSMA extends FinancialObject {
 		
 		// used for breaking the loop once currentValue is set. We only run the loop once internally because it needs to move on to the next object in the array. The array will eventually loop back to the first object and call this entire method again.
 		double currentShortTerm = 0.0;	
-		
-		symbol = "AMZN";
 		
 		String myString = "https://www.alphavantage.co/query?function=SMA&symbol=" + symbol + "&interval=1min&time_period=5&series_type=close&apikey=U7CEKTSD7MP0A660";
 		
@@ -227,14 +204,6 @@ public class FinancialSMA extends FinancialObject {
 								stSMA = line.substring(start + 1, decimal + 5);
 					currentShortTerm = Double.parseDouble(stSMA);
 					
-					
-					
-					
-					if (consoleView) {
-						
-						System.out.println("The current simple short term moving average is " + currentShortTerm);
-					
-					}
 												
 				}
 			
@@ -308,8 +277,10 @@ public class FinancialSMA extends FinancialObject {
 						
 						if (consoleView) {
 							
-							
-							System.out.println("The current simple long term moving average is " + currentLongTerm);
+
+							System.out.println("\nThe current short term SMA for " + symbol + " is " + currentShortTerm);
+							System.out.println("\nThe current long term SMA for " + symbol + " is " + currentLongTerm);
+							System.out.println("\n-------------------------------------------------------------------");
 						
 						}
 			
@@ -332,48 +303,47 @@ public class FinancialSMA extends FinancialObject {
 		
 		try {
 			
-			Thread.sleep(2 * 1000);
+			Thread.sleep(2 * 500);
 		
 		} catch (InterruptedException e1) {
 			
 			e1.printStackTrace();
 		}	
-		
-		
-		System.out.println("Made it this far and " + currentShortTerm + " " + currentLongTerm);
-		
-		
+					
 		
 		if (initializeSt) {
 			
-			if (currentShortTerm < currentLongTerm)
+			if (currentShortTerm < currentLongTerm) {
 				
-				System.out.println("Short term moving average for" + symbol + "has exceeded long term moving average");
+				System.out.println("Short term SMA for " + symbol + " has dropped below long term SMA");
+				
+				
+				try {
+					printOutput("\nShort term SMA for " + symbol.toString() + " has dropped below long term SMA at " + getDate());
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 			
-			
+
+			}
+						
 			
 		}
 		
 		else {
-			if (currentShortTerm > currentLongTerm)
+			if (currentShortTerm > currentLongTerm) {
 				
-				System.out.println("Short term moving average for" + symbol + "has exceeded long term moving average");
+				System.out.println("Short term SMA for" + symbol + "has risen above long term SMA");
+			
+
+			}
 		}
 		
 		
 		
-	
-		// Assume ST < LT to start
-		if (currentShortTerm > currentLongTerm)
-			
-			System.out.println("Short term moving average for" + symbol + "has exceeded long term moving average");
-		
-		// Assume ST > LT to start
-		if (currentShortTerm < currentLongTerm)
-			
-			System.out.println("Short term moving average for" + symbol + "has exceeded long term moving average");
-			
-			
+
 			
 			
 			
