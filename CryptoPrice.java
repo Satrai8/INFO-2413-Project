@@ -27,26 +27,6 @@ public class CryptoPrice extends FinancialObject {
 		String endString ="&apikey=U7CEKTSD7MP0A660";
 		String myString = "https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_INTRADAY&symbol=" + symbol + "&market=USD" + endString;
 
-		
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		Date date = new Date();
-		System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
-		
-		try {
-			printOutput("\nTarget for " + symbol.toString() + " reached at " + getDate());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try {
-			printOutput("\nbig boi" + getDate());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-
 		try {
 	
 			URL url = new URL(myString);
