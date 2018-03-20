@@ -172,7 +172,8 @@ public class FinancialPrice extends FinancialObject {
 					
 					if (consoleView) {
 					System.out.println("\nCurrent value for " + symbol + " is " + currentVal + "\n");					
-					System.out.println("target is " + target + "\n");										
+					System.out.printf("Target value is %.2f%n",target);
+					System.out.println("");
 					System.out.println("Initial Value is " + initialValue + "\n");					
 					System.out.println("-------------------------------------------------------------------");
 					
@@ -207,7 +208,7 @@ public class FinancialPrice extends FinancialObject {
 	}
 	
 	catch (MalformedURLException e) {
-		   System.err.println("SHIT??");
+		   System.err.println("Malformed URL exception, please restart the program.");
 	}
 	
 	catch (IOException e) {

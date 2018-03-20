@@ -143,7 +143,7 @@ public class FinancialVolume extends FinancialObject {
 	}
 	
 	catch (MalformedURLException e) {
-		   System.err.println("SHIT??");
+		   System.err.println("Malformed URL exception, please restart the program.");
 	}
 	
 	catch (IOException e) {

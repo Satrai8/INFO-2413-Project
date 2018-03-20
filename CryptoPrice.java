@@ -27,6 +27,8 @@ public class CryptoPrice extends FinancialObject {
 		String endString ="&apikey=U7CEKTSD7MP0A660";
 		String myString = "https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_INTRADAY&symbol=" + symbol + "&market=USD" + endString;
 
+		
+
 		try {
 	
 			URL url = new URL(myString);

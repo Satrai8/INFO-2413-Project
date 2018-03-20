@@ -85,7 +85,6 @@ public class FinancialSMA extends FinancialObject {
 			}
 			
 			
-			// used for breaking the loop once currentValue is set. We only run the loop once internally because it needs to move on to the next object in the array. The array will eventually loop back to the first object and call this entire method again.
 					double currentLongTerm = 0.0;	
 					
 					
@@ -94,7 +93,7 @@ public class FinancialSMA extends FinancialObject {
 					
 				
 					
-					// all this part is the same as setInitialValues() method
+				
 					try {
 				
 						URL url = new URL(myString);
@@ -166,14 +165,13 @@ public class FinancialSMA extends FinancialObject {
 	public void compareValues() {
 		
 		
-		// used for breaking the loop once currentValue is set. We only run the loop once internally because it needs to move on to the next object in the array. The array will eventually loop back to the first object and call this entire method again.
 		double currentShortTerm = 0.0;	
 		
 		String myString = "https://www.alphavantage.co/query?function=SMA&symbol=" + symbol + "&interval=1min&time_period=5&series_type=close&apikey=U7CEKTSD7MP0A660";
 		
 	
 		
-		// all this part is the same as setInitialValues() method
+	
 		try {
 	
 			URL url = new URL(myString);
@@ -192,7 +190,7 @@ public class FinancialSMA extends FinancialObject {
 		
 			while (line !=null && stSMA.equals("not initiated")) {
 				
-				// same idea as setInitialValue() method		
+					
 				if (line.contains("\"SMA\"")){
 		
 					int index = line.indexOf("\"SMA\"");
@@ -214,7 +212,7 @@ public class FinancialSMA extends FinancialObject {
 	}
 	
 	catch (MalformedURLException e) {
-		   System.err.println("SHIT??");
+		   System.err.println("Malformed URL exception, please restart the program.");
 	}
 	
 	catch (IOException e) {
@@ -232,7 +230,6 @@ public class FinancialSMA extends FinancialObject {
 	}
 	
 	
-	// used for breaking the loop once currentValue is set. We only run the loop once internally because it needs to move on to the next object in the array. The array will eventually loop back to the first object and call this entire method again.
 			double currentLongTerm = 0.0;	
 			
 			
@@ -293,7 +290,7 @@ public class FinancialSMA extends FinancialObject {
 		}
 		
 		catch (MalformedURLException e) {
-			   System.err.println("SHIT??");
+			   System.err.println("Malformed URL exception, please restart the program.");
 		}
 		
 		catch (IOException e) {
@@ -341,18 +338,7 @@ public class FinancialSMA extends FinancialObject {
 			}
 		}
 		
-		
-		
 
-			
-			
-			
-			
-			
-	
-	
-	
-	
 	
     }
 	
