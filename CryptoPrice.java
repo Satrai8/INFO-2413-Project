@@ -61,29 +61,27 @@ public class CryptoPrice extends FinancialObject {
 					price = line.substring(start + 1, decimal + 5);
 					currentVal = Double.parseDouble(price);
 					
-					if (percentage > 1 && currentVal > target) {
+					
+					if (consoleView) {
 						
-						System.out.println("Current value is " + symbol + " is " + currentVal + "\n");
-						
-						System.out.println("target " + target + "\n");
-											
-						System.out.println("initial Value is " + initialValue + "\n");
-						
-						System.out.println("-------------------------------------------------------------------");
-						
+					System.out.printf("Initial value for " + symbol + " is %.2f%n",initialValue);
+					System.out.println("");
+					System.out.printf("Target value is %.2f%n",target);
+					System.out.println("");					
+					System.out.printf("Current value is %.2f%n",currentVal);
+					System.out.println("");
+					System.out.println("-------------------------------------------------------------------");
+					
 					}
 					
-					else if (percentage < 1 && currentVal < target);
 					
-				
-				
-					System.out.println("Current value for " + symbol + " is " + currentVal + "\n");
 					
-					System.out.println("target value is " + target + "\n");
-									
-					System.out.println("initial Value is " + initialValue + "\n");
+					if (percentage > 1 && currentVal > target) 
+						System.out.printf("Target value for " + symbol + "has been reached %.2f%n",target);		
 					
-					System.out.println("-------------------------------------------------------------------");
+					if (percentage < 1 && currentVal < target) 
+					System.out.printf("Target value for " + symbol + " has been reached %.2f%n",target);
+					
 					
 				}
 
@@ -93,7 +91,7 @@ public class CryptoPrice extends FinancialObject {
 	}
 	
 	catch (MalformedURLException e) {
-		   System.err.println("SHIT??");
+		   System.err.println("Connection error. Please restart the program.");
 	}
 	
 	catch (IOException e) {
@@ -166,7 +164,7 @@ public class CryptoPrice extends FinancialObject {
 	}
 	
 	catch (MalformedURLException e) {
-		   System.err.println("SHIT??");
+		   System.err.println("Connection error. Please restart the program.");
 	}
 	
 	catch (IOException e) {
@@ -184,6 +182,38 @@ public class CryptoPrice extends FinancialObject {
 	}
 	
 	
+	}
+
+	@Override
+	public boolean validateCall(String inputSymbol) throws IOException {
+		symbol = inputSymbol;
+		String str = "https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_INTRADAY&symbol=" + symbol + "&market=USD&apikey=U7CEKTSD7MP0A660";
+		int lineIndex = 0;
+		boolean valid = true;
+		
+		
+		URL url = new URL(str);
+
+		URLConnection hc = url.openConnection();
+
+		InputStreamReader mystream = new InputStreamReader(hc.getInputStream());;
+		
+		BufferedReader buff = new BufferedReader(mystream);
+		
+		String line = buff.readLine();
+		
+		while (line != null && lineIndex <2) {
+						
+			/* API call for BATCH_STOCK_QUOTES query never returns error even with wrong stock ticker input
+			  we can only check for [] in output to see that an invalid or no input was used.
+			 */
+			if (line.contains("Error"))
+				valid = false;
+			
+			line = buff.readLine();
+			lineIndex ++;
+		}
+		return valid;
 	}
 
 }

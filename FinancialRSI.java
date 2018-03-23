@@ -76,7 +76,7 @@ public class FinancialRSI extends FinancialObject {
 	}
 	
 	catch (MalformedURLException e) {
-		   System.err.println("Malformed URL exception, please restart the program.");
+		   System.err.println("Connection error. Please restart the program.");
 	}
 	
 	catch (IOException e) {
@@ -99,5 +99,42 @@ public class FinancialRSI extends FinancialObject {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public boolean validateCall(String inputSymbol) throws IOException {
+		symbol = inputSymbol;
+		String str = "https://www.alphavantage.co/query?function=RSI&symbol=" + symbol + "&interval=15min&time_period=10&series_type=close&apikey=U7CEKTSD7MP0A660";
+		int lineIndex = 0;
+		boolean valid = true;
+		
+		
+		URL url = new URL(str);
+
+		URLConnection hc = url.openConnection();
+
+		InputStreamReader mystream = new InputStreamReader(hc.getInputStream());;
+		
+		BufferedReader buff = new BufferedReader(mystream);
+		
+		String line = buff.readLine();
+		
+		while (line != null && lineIndex <2) {
+						
+			/* API call for BATCH_STOCK_QUOTES query never returns error even with wrong stock ticker input
+			  we can only check for [] in output to see that an invalid or no input was used.
+			 */
+			if (line.contains("Error"))
+				valid = false;
+			
+			line = buff.readLine();
+			lineIndex ++;
+		}
+		return valid;
+		
+		
+		
+		
+	}
+
 
 }

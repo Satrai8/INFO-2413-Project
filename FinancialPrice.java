@@ -4,7 +4,6 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.Scanner;
 
 
 
@@ -12,9 +11,11 @@ public class FinancialPrice extends FinancialObject {
 	
 	// the fields we need for this class in particular. Symbol(ex. AMZN) and Market(ex. NYSE) are inherited through superclass so not used directly here.
 	
-	double percentage;
+	double positivePercentage;
+	double negativePercentage;
 	double initialValue;
-	double target;
+	double highTarget;
+	double lowTarget;
 	
 	
 	// default constructor for making the object
@@ -25,7 +26,14 @@ public class FinancialPrice extends FinancialObject {
 	
 	// used for setting the percentage from user input and converting it to a value we can use for the math. Will work with negatives too (ex. -5/100 + 1.0 = 0.95)
 	public void setPercentage(double myPercentage){
-		percentage = myPercentage/100.00 + 1.00;
+		if(myPercentage > 0)
+		{
+			positivePercentage = myPercentage/100.00 + 1.00;
+		}
+		else if(myPercentage < 0)
+		{
+			negativePercentage = myPercentage/100.00 +1.00;
+		}
 	}
 	
 	
@@ -95,7 +103,8 @@ public class FinancialPrice extends FinancialObject {
 					initialValue = Double.parseDouble(price);
 					
 					// percentage is already sent properly in the main class where setPercentage is called, so our math works fine here to get target.
-					target = initialValue * percentage ;
+					highTarget = initialValue * positivePercentage;
+					lowTarget = initialValue * negativePercentage;
 											
 				}
 			
@@ -106,7 +115,7 @@ public class FinancialPrice extends FinancialObject {
 	}
 	
 	catch (MalformedURLException e) {
-		   System.err.println("SHIT??");
+		   System.err.println("Connection error. Please restart the program.");
 	}
 	
 	catch (IOException e) {
@@ -172,7 +181,8 @@ public class FinancialPrice extends FinancialObject {
 					
 					if (consoleView) {
 					System.out.println("\nCurrent value for " + symbol + " is " + currentVal + "\n");					
-					System.out.printf("Target value is %.2f%n",target);
+					System.out.printf("Upper target value is %.2f%n",highTarget);
+					System.out.printf("Lower target value is %.2f%n",lowTarget);
 					System.out.println("");
 					System.out.println("Initial Value is " + initialValue + "\n");					
 					System.out.println("-------------------------------------------------------------------");
@@ -184,17 +194,17 @@ public class FinancialPrice extends FinancialObject {
 					
 					
 					
-					if (percentage > 1.0 && currentVal > target) {
+					if (positivePercentage > 1.0 && currentVal > highTarget) {
 												
-						System.out.println("****************  Your target price for " + symbol + " has been reached  ************************");					
+						System.out.println("****************  Your upper target price for " + symbol + " has been reached  ************************");					
 						
 						System.out.println("-------------------------------------------------------------------");
 												
 					}
 					
-					else if (percentage < 1.0 && currentVal < target) {
+					else if (negativePercentage < 1.0 && currentVal < lowTarget) {
 					
-					System.out.println("****************  Your target price for " + symbol + " has been reached  ************************");
+					System.out.println("****************  Your lower target price for " + symbol + " has been reached  ************************");
 					
 					System.out.println("-------------------------------------------------------------------");
 					}
@@ -208,7 +218,7 @@ public class FinancialPrice extends FinancialObject {
 	}
 	
 	catch (MalformedURLException e) {
-		   System.err.println("Malformed URL exception, please restart the program.");
+		   System.err.println("Connection error. Please restart the program.");
 	}
 	
 	catch (IOException e) {
@@ -225,4 +235,41 @@ public class FinancialPrice extends FinancialObject {
 		e1.printStackTrace();
 	}	
     }
+
+
+	@Override
+	public boolean validateCall(String inputSymbol) throws IOException {
+		symbol = inputSymbol;
+		String str = "https://www.alphavantage.co/query?function=BATCH_STOCK_QUOTES&symbols=" + symbol + "&apikey=U7CEKTSD7MP0A660";
+		boolean valid = true;
+		
+		
+		URL url = new URL(str);
+
+		URLConnection hc = url.openConnection();
+
+		InputStreamReader mystream = new InputStreamReader(hc.getInputStream());;
+		
+		BufferedReader buff = new BufferedReader(mystream);
+		
+		String line = buff.readLine();
+		
+		while (line != null) {
+						
+			/* API call for BATCH_STOCK_QUOTES query never returns error even with wrong stock ticker input
+			  we can only check for [] in output to see that an invalid or no input was used.
+			 */
+			if (line.contains("[]"))
+				valid = false;
+			
+			line = buff.readLine();
+		}
+		return valid;
+		
+		
+		
+		
+	}
+
+	
 }
