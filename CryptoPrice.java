@@ -215,5 +215,72 @@ public class CryptoPrice extends FinancialObject {
 		}
 		return valid;
 	}
+	
+	public double getPrice(){
+		
+
+		String endString ="&apikey=U7CEKTSD7MP0A660";
+		String myString = "https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_INTRADAY&symbol=" + symbol + "&market=USD" + endString;
+		String priceStr = "no price available";	
+		double price = 0;
+
+		
+
+		try {
+	
+			URL url = new URL(myString);	
+			URLConnection hc = url.openConnection();	
+			InputStreamReader mystream = new InputStreamReader(hc.getInputStream());;	
+			BufferedReader buff = new BufferedReader(mystream);	
+			String line = buff.readLine();
+	
+	
+	
+	
+			while (line != null && priceStr.equals("no price available")) {
+
+				if (line.contains("price")){
+		
+					int index = line.indexOf("price");
+					int decimal = line.indexOf(".",index);
+					int start = decimal;
+			
+					while (line.charAt(start) != '\"')
+					start --;
+			
+					priceStr = line.substring(start + 1, decimal + 5);
+					price = Double.parseDouble(priceStr);					
+
+					
+				}
+
+		line = buff.readLine();
+
+			}
+	}
+	
+	catch (MalformedURLException e) {
+		   System.err.println("Connection error. Please restart the program.");
+	}
+	
+	catch (IOException e) {
+		
+		e.printStackTrace();
+	}
+	
+	try {
+		
+		Thread.sleep(2 * 1000);
+	
+	} catch (InterruptedException e1) {
+		
+		e1.printStackTrace();
+	}
+	
+	return price;
+		
+		
+	}
+
 
 }

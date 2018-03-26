@@ -4,7 +4,7 @@ public class MainClass{
 
     public static void main(String[] args)throws Exception {
 
-	ArrayList<FinancialObject> objects = new ArrayList();
+	ArrayList<FinancialObject> objects = new ArrayList<FinancialObject>();
 	int numberOfObjects = 0;
 
 	int menuChoice;
@@ -105,7 +105,7 @@ public class MainClass{
                 			}
                         
                         ob4.setSymbol(symbol);
-                        System.out.println("                                      The current price of " + symbol + " is $1.00.");
+                        System.out.printf("                                      The current price of " + symbol + " is %.2f%n",ob4.getPrice());
                         double percentIncrease = -1;
                         while (percentIncrease <= 0){
                             System.out.println();
@@ -254,7 +254,7 @@ public class MainClass{
                     ob2.setMarket("Crypto");
                     ob2.setSymbol(symbol);
                     System.out.println();
-                    System.out.println("                                      The current price of " + symbol + " is $1.00.");
+                    System.out.printf("                                      The current price of " + symbol + " is %.2f%n",ob2.getPrice());
                     double percentIncrease = -1;
                     while (percentIncrease < 0){
                         System.out.println();
