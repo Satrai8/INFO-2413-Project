@@ -39,7 +39,7 @@ public abstract class FinancialObject {
 	
 	public abstract void setInitialValues();
 	
-	
+			
 	// Check if user wants to display output on screen
 	public void setConsoleInput(int x){
 		
@@ -71,9 +71,11 @@ public abstract class FinancialObject {
 		return dateFormat.format(date);
 	}
 	
-	public abstract boolean validateCall(String inputSymbol) throws IOException;
-
+	public abstract boolean validateCallSymbol(String inputSymbol) throws IOException;
+	
 }
+
+
 		
 
 

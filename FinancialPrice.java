@@ -180,21 +180,39 @@ public class FinancialPrice extends FinancialObject {
 					
 					
 					if (consoleView) {
-					System.out.println("\nCurrent value for " + symbol + " is " + currentVal + "\n");					
-					System.out.printf("Upper target value is %.2f%n",highTarget);
-					System.out.printf("Lower target value is %.2f%n",lowTarget);
-					System.out.println("");
-					System.out.println("Initial Value is " + initialValue + "\n");					
-					System.out.println("-------------------------------------------------------------------");
+                                            System.out.println();
+                                            System.out.println();
+                                            System.out.println("                                      ,.-----__");
+                                            System.out.println("                                   ,:::://///,:::-.");
+                                            System.out.println("                                  /:''/////// ``:::`;/|/     .---------------.");
+                                            System.out.println("                                 /'   ||||||     :://'`\\     |   Sell Now!   |");
+                                            System.out.println("                               .' ,   ||||||     `/(  e \\    /---------------'");
+                                            System.out.println("                         -===~__-'\\__X_`````\\_____/~`-._ `.                 ");
+                                            System.out.println("                                     ~~        ~~       `~-'");
+                                            System.out.println("                         $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $");
+                                            System.out.println();
+                                            System.out.println("                                          24/03/2018 14:02:36");
+                                            System.out.println();
+                                            System.out.println("                                       " + symbol + " just reached $154.32");
+                                            System.out.println("                                     Your target price was $154.25");
+                                            System.out.println();
+                                            System.out.println("                         $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $");
+                                            System.out.println();
+                                            System.out.println();
+                                            System.out.println("-------------------------------------------------------------------");
+                                            System.out.println("\nCurrent value for " + symbol + " is " + currentVal + "\n");					
+                                            System.out.printf("Upper target value is %.2f%n",highTarget);
+                                            System.out.printf("Lower target value is %.2f%n",lowTarget);
+                                            System.out.println("");
+                                            System.out.println("Initial Value is " + initialValue + "\n");					
+                                            System.out.println("-------------------------------------------------------------------");
 					
 					}
 					
 					
 					
 					
-					
-					
-					if (positivePercentage > 1.0 && currentVal > highTarget) {
+					if (currentVal > highTarget) {
 												
 						System.out.println("****************  Your upper target price for " + symbol + " has been reached  ************************");					
 						
@@ -202,7 +220,9 @@ public class FinancialPrice extends FinancialObject {
 												
 					}
 					
-					else if (negativePercentage < 1.0 && currentVal < lowTarget) {
+					
+					
+					else if (currentVal < lowTarget) {
 					
 					System.out.println("****************  Your lower target price for " + symbol + " has been reached  ************************");
 					
@@ -238,9 +258,9 @@ public class FinancialPrice extends FinancialObject {
 
 
 	@Override
-	public boolean validateCall(String inputSymbol) throws IOException {
-		symbol = inputSymbol;
-		String str = "https://www.alphavantage.co/query?function=BATCH_STOCK_QUOTES&symbols=" + symbol + "&apikey=U7CEKTSD7MP0A660";
+	public boolean validateCallSymbol(String inputSymbol) throws IOException {
+
+		String str = "https://www.alphavantage.co/query?function=BATCH_STOCK_QUOTES&symbols=" + inputSymbol + "&apikey=U7CEKTSD7MP0A660";
 		boolean valid = true;
 		
 		
@@ -270,8 +290,7 @@ public class FinancialPrice extends FinancialObject {
 		
 		
 	}
-
-
+	
 	public double getPrice() {
 
 		String endString ="&apikey=U7CEKTSD7MP0A660";		
@@ -327,6 +346,7 @@ public class FinancialPrice extends FinancialObject {
 	return price;
 		
 	}
+
 
 	
 }

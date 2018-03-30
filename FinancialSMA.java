@@ -7,7 +7,12 @@ import java.net.URLConnection;
 
 public class FinancialSMA extends FinancialObject {
 	
-	boolean initializeSt = false;
+	int shortTermPeriod;
+	int longTermPeriod;
+	double initialShortTerm;
+	double initialLongTerm;
+	boolean shortTermBeginHigher = false;
+	int timePeriod = 5;
 	
 	
 
@@ -15,13 +20,13 @@ public class FinancialSMA extends FinancialObject {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
-	public void setinitializeSt() {
+	@Override
+	public void setInitialValues() {
 		
 		// used for breaking the loop once currentValue is set. We only run the loop once internally because it needs to move on to the next object in the array. The array will eventually loop back to the first object and call this entire method again.
 				double currentShortTerm = 0.0;	
 				
-				String myString = "https://www.alphavantage.co/query?function=SMA&symbol=" + symbol + "&interval=1min&time_period=5&series_type=close&apikey=U7CEKTSD7MP0A660";
+				String myString = "https://www.alphavantage.co/query?function=SMA&symbol=" + symbol + "&interval=1min&time_period=" + shortTermPeriod + "&series_type=close&apikey=U7CEKTSD7MP0A660";
 				
 			
 				
@@ -54,7 +59,7 @@ public class FinancialSMA extends FinancialObject {
 							while (line.charAt(start) != '\"')
 							start --;
 										stSMA = line.substring(start + 1, decimal + 5);
-							currentShortTerm = Double.parseDouble(stSMA);
+							initialShortTerm = Double.parseDouble(stSMA);
 							
 	
 														
@@ -89,7 +94,7 @@ public class FinancialSMA extends FinancialObject {
 					
 					
 					
-					 myString = "https://www.alphavantage.co/query?function=SMA&symbol=" + symbol + "&interval=1min&time_period=60&series_type=close&apikey=U7CEKTSD7MP0A660";
+					 myString = "https://www.alphavantage.co/query?function=SMA&symbol=" + symbol + "&interval=1min&time_period=" + longTermPeriod + "&series_type=close&apikey=U7CEKTSD7MP0A660";
 					
 				
 					
@@ -122,7 +127,7 @@ public class FinancialSMA extends FinancialObject {
 								while (line.charAt(start) != '\"')
 								start --;
 											ltSMA = line.substring(start + 1, decimal + 5);
-								currentLongTerm = Double.parseDouble(ltSMA);
+								initialLongTerm = Double.parseDouble(ltSMA);
 					
 							}
 						
@@ -152,7 +157,7 @@ public class FinancialSMA extends FinancialObject {
 								
 				
 				if (currentShortTerm > currentLongTerm) {
-					initializeSt = true;
+					shortTermBeginHigher = true;
 				}
 		
 		
@@ -167,7 +172,7 @@ public class FinancialSMA extends FinancialObject {
 		
 		double currentShortTerm = 0.0;	
 		
-		String myString = "https://www.alphavantage.co/query?function=SMA&symbol=" + symbol + "&interval=1min&time_period=5&series_type=close&apikey=U7CEKTSD7MP0A660";
+		String myString = "https://www.alphavantage.co/query?function=SMA&symbol=" + symbol + "&interval=1min&time_period=" + shortTermPeriod + "&series_type=close&apikey=U7CEKTSD7MP0A660";
 		
 	
 		
@@ -234,7 +239,7 @@ public class FinancialSMA extends FinancialObject {
 			
 			
 			
-			 myString = "https://www.alphavantage.co/query?function=SMA&symbol=" + symbol + "&interval=1min&time_period=60&series_type=close&apikey=U7CEKTSD7MP0A660";
+			myString = "https://www.alphavantage.co/query?function=SMA&symbol=" + symbol + "&interval=1min&time_period=" + longTermPeriod + "&series_type=close&apikey=U7CEKTSD7MP0A660";
 			
 		
 			
@@ -307,8 +312,8 @@ public class FinancialSMA extends FinancialObject {
 			e1.printStackTrace();
 		}	
 					
-		
-		if (initializeSt) {
+
+		if (shortTermBeginHigher) {
 			
 			if (currentShortTerm < currentLongTerm) {
 				
@@ -341,23 +346,25 @@ public class FinancialSMA extends FinancialObject {
 
 	
     }
-	
-	
-	
-		
-	
+						
 
-	@Override
-	public void setInitialValues() {
-		// TODO Auto-generated method stub
+	
+	public void setSMAShortTerm(int inputShortTerm) {
+		
+		shortTermPeriod = inputShortTerm;
+	}
+	
+	public void setSMALongTerm(int inputLongTerm) {
+		
+		longTermPeriod = inputLongTerm;
+		
 		
 	}
 
-
 	@Override
-	public boolean validateCall(String inputSymbol) throws IOException {
-		symbol = inputSymbol;
-		String str = "https://www.alphavantage.co/query?function=SMA&symbol=" + symbol + "&interval=1min&time_period=5&series_type=close&apikey=U7CEKTSD7MP0A660";
+	public boolean validateCallSymbol(String inputSymbol) throws IOException {
+
+		String str = "https://www.alphavantage.co/query?function=SMA&symbol=" + inputSymbol + "&interval=1min&time_period=5&series_type=close&apikey=U7CEKTSD7MP0A660";
 		int lineIndex = 0;
 		boolean valid = true;
 		
@@ -374,9 +381,6 @@ public class FinancialSMA extends FinancialObject {
 		
 		while (line != null && lineIndex <2) {
 						
-			/* API call for BATCH_STOCK_QUOTES query never returns error even with wrong stock ticker input
-			  we can only check for [] in output to see that an invalid or no input was used.
-			 */
 			if (line.contains("Error"))
 				valid = false;
 			
@@ -384,11 +388,44 @@ public class FinancialSMA extends FinancialObject {
 			lineIndex ++;
 		}
 		return valid;
+				
+	}	
+	
+	
+public boolean validateCallTimePeriod(int inputTime) throws IOException {
+		
+		String str = "https://www.alphavantage.co/query?function=SMA&symbol=" + symbol + "&interval=1min&time_period=" + inputTime + "&series_type=close&apikey=U7CEKTSD7MP0A660";
+		int lineIndex = 0;
+		boolean valid = true;
 		
 		
+		URL url = new URL(str);
+
+		URLConnection hc = url.openConnection();
+
+		InputStreamReader mystream = new InputStreamReader(hc.getInputStream());;
 		
+		BufferedReader buff = new BufferedReader(mystream);
 		
+		String line = buff.readLine();
+		
+		while (line != null && lineIndex <30) {
+						
+
+			if (line.contains("{}") || line.contains("Error"))
+				valid = false;
+			
+			line = buff.readLine();
+			lineIndex ++;
+		}
+		return valid;
+					
 	}
 	
+	public void setTimePeriod(int rsiLength) {
+		
+		timePeriod = rsiLength;
+		
+	}
 
 }

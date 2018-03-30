@@ -13,12 +13,23 @@ public class CryptoPrice extends FinancialObject {
 
 	double percentage;
 	double initialValue;
-	double target;
+	double positivePercentage;
+	double negativePercentage;
+	double highTarget;
+	double lowTarget;
 	
 	
 	public void setPercentage(double myPercentage){
-		percentage = myPercentage/100.00 + 1.00;
+		if(myPercentage > 0)
+		{
+			positivePercentage = myPercentage/100.00 + 1.00;
+		}
+		else if(myPercentage < 0)
+		{
+			negativePercentage = myPercentage/100.00 +1.00;
+		}
 	}
+	
 	
 	@Override
 	public void compareValues() {
@@ -66,8 +77,10 @@ public class CryptoPrice extends FinancialObject {
 						
 					System.out.printf("Initial value for " + symbol + " is %.2f%n",initialValue);
 					System.out.println("");
-					System.out.printf("Target value is %.2f%n",target);
-					System.out.println("");					
+					System.out.printf("Target high value is %.2f%n",highTarget);
+					System.out.println("");	
+					System.out.printf("Target low value is %.2f%n",lowTarget);
+					System.out.println("");	
 					System.out.printf("Current value is %.2f%n",currentVal);
 					System.out.println("");
 					System.out.println("-------------------------------------------------------------------");
@@ -76,11 +89,24 @@ public class CryptoPrice extends FinancialObject {
 					
 					
 					
-					if (percentage > 1 && currentVal > target) 
-						System.out.printf("Target value for " + symbol + "has been reached %.2f%n",target);		
 					
-					if (percentage < 1 && currentVal < target) 
-					System.out.printf("Target value for " + symbol + " has been reached %.2f%n",target);
+					
+					if (currentVal > highTarget) {
+												
+						System.out.println("****************  Your upper target price for " + symbol + " has been reached  ************************");					
+						
+						System.out.println("-------------------------------------------------------------------");
+												
+					}
+					
+					else if (currentVal < lowTarget) {
+					
+					System.out.println("****************  Your lower target price for " + symbol + " has been reached  ************************");
+					
+					System.out.println("-------------------------------------------------------------------");
+					}
+							
+				
 					
 					
 				}
@@ -151,7 +177,9 @@ public class CryptoPrice extends FinancialObject {
 			
 					price = line.substring(start + 1, decimal + 5);
 					initialValue = Double.parseDouble(price);
-					target = initialValue * percentage ;
+					
+					highTarget = initialValue * positivePercentage;
+					lowTarget = initialValue * negativePercentage;
 										
 
 				}
@@ -185,7 +213,7 @@ public class CryptoPrice extends FinancialObject {
 	}
 
 	@Override
-	public boolean validateCall(String inputSymbol) throws IOException {
+	public boolean validateCallSymbol(String inputSymbol) throws IOException {
 		symbol = inputSymbol;
 		String str = "https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_INTRADAY&symbol=" + symbol + "&market=USD&apikey=U7CEKTSD7MP0A660";
 		int lineIndex = 0;

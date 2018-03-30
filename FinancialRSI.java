@@ -7,6 +7,8 @@ import java.net.URLConnection;
 
 public class FinancialRSI extends FinancialObject {
 
+	int timePeriod = 10;
+	
 	public FinancialRSI() {
 		// TODO Auto-generated constructor stub
 	}
@@ -18,7 +20,7 @@ public class FinancialRSI extends FinancialObject {
 		
 		String endString ="&apikey=U7CEKTSD7MP0A660";
 		
-		String myString = "https://www.alphavantage.co/query?function=RSI&symbol=" + symbol + "&interval=15min&time_period=10&series_type=close" + endString;
+		String myString = "https://www.alphavantage.co/query?function=RSI&symbol=" + symbol + "&interval=15min&time_period=" + timePeriod + "&series_type=close" + endString;
 		
 		try {
 			
@@ -52,14 +54,21 @@ public class FinancialRSI extends FinancialObject {
 					RSI = Double.parseDouble(strRSI);
 					
 					
+					if (consoleView) {
 					System.out.println("");	
 					System.out.println("RSI for " + symbol + " is " + RSI + "\n");
 					System.out.println("-------------------------------------------------------------------");
+					}
+					
+					
+					
 					
 					if (RSI > 70) {
 						System.out.println("RSI for " + symbol + " is now overbought. It is currently: " + RSI + ". Consider selling.");
 					}
-						if ( RSI < 30) {
+					
+					
+					else if ( RSI < 30) {
 							
 							System.out.println("RSI for " + symbol + " is now oversold. It is currently: " + RSI + ". Consider buying.");
 							
@@ -101,9 +110,9 @@ public class FinancialRSI extends FinancialObject {
 	}
 
 	@Override
-	public boolean validateCall(String inputSymbol) throws IOException {
-		symbol = inputSymbol;
-		String str = "https://www.alphavantage.co/query?function=RSI&symbol=" + symbol + "&interval=15min&time_period=10&series_type=close&apikey=U7CEKTSD7MP0A660";
+	public boolean validateCallSymbol(String inputSymbol) throws IOException {
+		
+		String str = "https://www.alphavantage.co/query?function=RSI&symbol=" + inputSymbol + "&interval=15min&time_period=10&series_type=close&apikey=U7CEKTSD7MP0A660";
 		int lineIndex = 0;
 		boolean valid = true;
 		
@@ -130,11 +139,46 @@ public class FinancialRSI extends FinancialObject {
 			lineIndex ++;
 		}
 		return valid;
-		
-		
-		
-		
+					
 	}
 
+	
+	public boolean validateCallTimePeriod(int inputTime) throws IOException {
+		
+		String str = "https://www.alphavantage.co/query?function=RSI&symbol=" + symbol + "&interval=15min&time_period=" + inputTime + "&series_type=close&apikey=U7CEKTSD7MP0A660";
+		int lineIndex = 0;
+		boolean valid = true;
+		
+		
+		URL url = new URL(str);
+
+		URLConnection hc = url.openConnection();
+
+		InputStreamReader mystream = new InputStreamReader(hc.getInputStream());;
+		
+		BufferedReader buff = new BufferedReader(mystream);
+		
+		String line = buff.readLine();
+		
+		while (line != null && lineIndex <30) {
+						
+			/* API call for BATCH_STOCK_QUOTES query never returns error even with wrong stock ticker input
+			  we can only check for [] in output to see that an invalid or no input was used.
+			 */
+			if (line.contains("{}") || line.contains("Error"))
+				valid = false;
+			
+			line = buff.readLine();
+			lineIndex ++;
+		}
+		return valid;
+					
+	}
+	
+	public void setTimePeriod(int rsiLength) {
+		
+		timePeriod = rsiLength;
+		
+	}
 
 }
