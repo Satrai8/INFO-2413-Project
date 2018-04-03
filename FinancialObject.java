@@ -1,14 +1,8 @@
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,64 +12,45 @@ import java.util.Date;
 
 public abstract class FinancialObject {
 	
-	String symbol;
-	String market;
-	Boolean consoleView = false;
-	
+	String apiKey = "U7CEKTSD7MP0A660";
+    String symbol;
+    String market;
+    Boolean consoleView = false;
 
-	public void setSymbol(String mySymbol){
-		
-		symbol = mySymbol;
-	}
-	
-	public void setMarket(String myMarket){
-		
-		market = myMarket;
-		}
-		
-	// abstract classes that are defined with different method bodies in the subclasses
-	
-	public abstract void compareValues();
-	
-	public abstract void setInitialValues();
-	
-			
-	// Check if user wants to display output on screen
-	public void setConsoleInput(int x){
-		
-		if (x == 1)
-			consoleView = true;
-		
-		else consoleView = false;		
-	}	
-	
-	
-	public void printOutput(String s) throws Exception {
-		
-		File file = new File("word.txt");
-		PrintWriter writer = new PrintWriter(new FileWriter(file,true));
-		BufferedWriter buff = new BufferedWriter(writer);
-		
 
-		buff.write(s);
-		buff.newLine();
-		buff.flush();
-		buff.close();
-		
-	}
-	
-	public String getDate(){
-		
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		Date date = new Date();
-		return dateFormat.format(date);
-	}
-	
-	public abstract boolean validateCallSymbol(String inputSymbol) throws IOException;
-	
+    public void setSymbol(String mySymbol) {
+
+        symbol = mySymbol;
+    }
+
+    public void setMarket(String myMarket) {
+
+        market = myMarket;
+    }
+
+    // abstract classes that are defined with different method bodies in the subclasses
+
+    public abstract void compareValues();	//used to check the rule for each different subclass
+    public abstract void setInitialValues();	// sets the starting values (price etc.) for comparison purposes
+
+
+    // Check if user wants to display output on screen
+    public void setConsoleInput(int x) {
+
+        if (x == 1)
+            consoleView = true;
+
+        else consoleView = false;
+    }
+
+
+    public String getDate() {	// current timestamp
+
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
+
+    public abstract boolean validateCallSymbol(String inputSymbol) throws IOException;
+
 }
-
-
-		
-
-
