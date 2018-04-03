@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////
 //                                                               //
 //   Armadillo 4000 was created by Zack Cockle, Sean Dunbar,     //
-//   Juergen Kriz, Ryan Mock, and Sunny Sunveer for INFO 2413    //
+//   Juergen Kriz, Ryan Mock, and Sunveer Sandhu for INFO 2413   //
 //   at Kwantlen Polytechnic University during the Spring 2018   //
 //   semester.                                                   //
 //                                                               //

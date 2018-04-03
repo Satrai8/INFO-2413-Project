@@ -52,36 +52,10 @@ public class FinancialRSI extends FinancialObject {
                     RSI = Double.parseDouble(strRSI);
 
                     if (consoleView) {
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
+
+                    	for(int i=0; i<30; i++)
+                    		System.out.println();
+                    	
                         System.out.println("                                               ,.-----__");
                         System.out.println("                                            ,:::://///,:::-.");
                         System.out.println("                                           /:''/////// ``:::`;/|/");
@@ -94,69 +68,19 @@ public class FinancialRSI extends FinancialObject {
                         System.out.println();
                         System.out.println("                                          " + getDate());
                         System.out.println();
-                        System.out.println("                                 The current RSI for " + symbol + " is " + RSI + "%");
+                        System.out.println("                                  The current RSI for " + symbol + " is " + RSI);
                         System.out.println();
                         System.out.println("                         $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $");
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
+
+                        for(int i=0; i<27; i++)
+                        	System.out.println();
                     }
 
                     if (RSI > 70) {
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
+
+                    	for(int i=0; i<30; i++)
+                    		System.out.println();
+                    	
                         System.out.println("                                      ,.-----__");
                         System.out.println("                                   ,:::://///,:::-.");
                         System.out.println("                                  /:''/////// ``:::`;/|/     .---------------.");
@@ -170,66 +94,17 @@ public class FinancialRSI extends FinancialObject {
                         System.out.println("                                          " + getDate());
                         System.out.println();
                         System.out.println("                                          " + symbol + " is overbought.");
-                        System.out.println("                                     Its RSI just reached " + RSI + "%");
+                        System.out.println("                                      Its RSI just reached " + RSI);
                         System.out.println();
                         System.out.println("                         $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $");
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
+
+                        for(int i=0; i<26; i++)
+                        	System.out.println();
                     } else if (RSI < 30) {
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
+
+                    	for(int i=0; i<30; i++)
+                        	System.out.println();
+                    	
                         System.out.println("                                      ,.-----__");
                         System.out.println("                                   ,:::://///,:::-.");
                         System.out.println("                                  /:''/////// ``:::`;/|/     .--------------.");
@@ -243,35 +118,12 @@ public class FinancialRSI extends FinancialObject {
                         System.out.println("                                          " + getDate());
                         System.out.println();
                         System.out.println("                                           " + symbol + " is oversold.");
-                        System.out.println("                                     Its RSI just reached " + RSI + "%");
+                        System.out.println("                                      Its RSI just reached " + RSI);
                         System.out.println();
                         System.out.println("                         $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $");
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
+
+                        for(int i=0; i<26; i++)
+                        	System.out.println();
                     }
                 }
 

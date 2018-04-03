@@ -262,36 +262,10 @@ public class FinancialSMA extends FinancialObject {
                     currentLongTerm = Double.parseDouble(ltSMA);
 
                     if (consoleView) {
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
+
+                    	for(int i=0; i<30; i++)
+                        	System.out.println();
+                    	
                         System.out.println("                                               ,.-----__");
                         System.out.println("                                            ,:::://///,:::-.");
                         System.out.println("                                           /:''/////// ``:::`;/|/");
@@ -304,36 +278,13 @@ public class FinancialSMA extends FinancialObject {
                         System.out.println();
                         System.out.println("                                          " + getDate());
                         System.out.println();
-                        System.out.println("                            The current short-term SMA for " + symbol + " is " + currentShortTerm + "%");
-                        System.out.println("                            The current long-term SMA for " + symbol + " is " + currentLongTerm + "%");
+                        System.out.println("                            The current short-term SMA for " + symbol + " is " + currentShortTerm);
+                        System.out.println("                            The current long-term SMA for " + symbol + " is " + currentLongTerm);
                         System.out.println();
                         System.out.println("                         $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $");
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
+
+                        for(int i=0; i<26; i++)
+                        	System.out.println();
                     }
                 }
 
@@ -359,36 +310,10 @@ public class FinancialSMA extends FinancialObject {
         if (shortTermBeginHigher) {
 
             if (currentShortTerm < currentLongTerm) {
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
+
+            	for(int i=0; i<30; i++)
+                	System.out.println();
+            	
                 System.out.println("                                      ,.-----__");
                 System.out.println("                                   ,:::://///,:::-.");
                 System.out.println("                                  /:''/////// ``:::`;/|/     .---------------.");
@@ -401,73 +326,22 @@ public class FinancialSMA extends FinancialObject {
                 System.out.println();
                 System.out.println("                                          " + getDate());
                 System.out.println();
-                System.out.println("                                The short-term SMA (" + currentShortTerm + "%) for " + symbol);
-                System.out.println("                            has dropped below the long-term SMA (" + currentLongTerm + "%)");
+                System.out.println("                                The short-term SMA (" + currentShortTerm + ") for " + symbol);
+                System.out.println("                            has dropped below the long-term SMA (" + currentLongTerm + ")");
                 System.out.println();
                 System.out.println("                         $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $");
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-            
 
+                for(int i=0; i<26; i++)
+                	System.out.println();        
             }
 
 
         } else {
             if (currentShortTerm > currentLongTerm) {
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
+
+            	for(int i=0; i<30; i++)
+                	System.out.println();
+            	
                 System.out.println("                                      ,.-----__");
                 System.out.println("                                   ,:::://///,:::-.");
                 System.out.println("                                  /:''/////// ``:::`;/|/     .--------------.");
@@ -480,36 +354,13 @@ public class FinancialSMA extends FinancialObject {
                 System.out.println();
                 System.out.println("                                          " + getDate());
                 System.out.println();
-                System.out.println("                                The short-term SMA (" + currentShortTerm + "%) for " + symbol);
-                System.out.println("                             has risen above the long-term SMA (" + currentLongTerm + "%)");
+                System.out.println("                                The short-term SMA (" + currentShortTerm + ") for " + symbol);
+                System.out.println("                             has risen above the long-term SMA (" + currentLongTerm + ")");
                 System.out.println();
                 System.out.println("                         $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $");
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
+
+                for(int i=0; i<26; i++)
+                	System.out.println();
             }
         }
     }

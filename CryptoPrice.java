@@ -68,36 +68,10 @@ public class CryptoPrice extends FinancialObject {
 
 
                     if (consoleView) {
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
+
+                    	for(int i=0; i<30; i++)
+                    		System.out.println();
+                    	
                         System.out.println("                                               ,.-----__");
                         System.out.println("                                            ,:::://///,:::-.");
                         System.out.println("                                           /:''/////// ``:::`;/|/");
@@ -113,66 +87,16 @@ public class CryptoPrice extends FinancialObject {
                         System.out.printf("                                The current price of " + symbol + " is US $%.2f%n", currentVal);
                         System.out.println();
                         System.out.println("                         $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $");
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
+
+                        for(int i=0; i<27; i++)
+                        	System.out.println();
                     }
 
                     if (currentVal > highTarget) {
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
+                    	
+                    	for(int i=0; i<30; i++)
+                    		System.out.println();
+                    	
                         System.out.println("                                      ,.-----__");
                         System.out.println("                                   ,:::://///,:::-.");
                         System.out.println("                                  /:''/////// ``:::`;/|/     .---------------.");
@@ -189,63 +113,15 @@ public class CryptoPrice extends FinancialObject {
                         System.out.printf("                                   Your target price was US $%.2f%n", highTarget);
                         System.out.println();
                         System.out.println("                         $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $");
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
+                        
+                        for(int i=0; i<26; i++)
+                        	System.out.println();
+                        
                     } else if (currentVal < lowTarget) {
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
+                        
+                    	for(int i=0; i<30; i++)
+                    		System.out.println();
+                    	
                         System.out.println("                                      ,.-----__");
                         System.out.println("                                   ,:::://///,:::-.");
                         System.out.println("                                  /:''/////// ``:::`;/|/     .--------------.");
@@ -262,32 +138,9 @@ public class CryptoPrice extends FinancialObject {
                         System.out.printf("                                   Your target price was US $%.2f%n", lowTarget);
                         System.out.println();
                         System.out.println("                         $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $");
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
-                        System.out.println();
+                        
+                        for(int i=0; i<26; i++)
+                        	System.out.println();
                     }
                 }
 
@@ -404,7 +257,7 @@ public class CryptoPrice extends FinancialObject {
         while (line != null && lineIndex < 2) {
 
             /* API call for BATCH_STOCK_QUOTES query never returns error even with wrong stock ticker input
-              we can only check for [] in output to see that an invalid or no input was used.
+              we can only check for Error in output to see that an invalid or no input was used.
              */
             if (line.contains("Error"))
                 valid = false;

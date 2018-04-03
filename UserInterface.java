@@ -401,36 +401,10 @@ public class UserInterface {
     ///////////////////////////////////////////////////////
 
     public static void displayExitMessage() {
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
+
+    	for(int i=0; i<30; i++)
+        	System.out.println();
+    	
         System.out.println("                                      ,.-----__");
         System.out.println("                                   ,:::://///,:::-.");
         System.out.println("                                  /:''/////// ``:::`;/|/     .--------------.");
@@ -438,41 +412,9 @@ public class UserInterface {
         System.out.println("                               .' ,   ||||||     `/(  e \\    /--------------'");
         System.out.println("                         -===~__-'\\__X_`````\\_____/~`-._ `.                 ");
         System.out.println("                                     ~~        ~~       `~-'");
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
+
+        for(int i=0; i<35; i++)
+        	System.out.println();
     }
 
 
@@ -495,36 +437,10 @@ public class UserInterface {
     }
 
     public static void displayMonitoringInitiatedConfirmation() {
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
+
+    	for(int i=0; i<30; i++)
+        	System.out.println();
+    	
         System.out.println("                                               ,.-----__");
         System.out.println("                                            ,:::://///,:::-.");
         System.out.println("                                           /:''/////// ``:::`;/|/");
@@ -535,37 +451,8 @@ public class UserInterface {
         System.out.println();
         System.out.println();
         System.out.println("                             M o n i t o r i n g   I n i t i a t e d . . .");
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
+
+        for(int i=0; i<32; i++)
+        	System.out.println();
     }
 }
