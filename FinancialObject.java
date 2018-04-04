@@ -12,7 +12,7 @@ import java.util.Date;
 
 public abstract class FinancialObject {
 	
-	String apiKey = "U7CEKTSD7MP0A660";
+    String apiKey = "U7CEKTSD7MP0A660";
     String symbol;
     String market;
     Boolean consoleView = false;
